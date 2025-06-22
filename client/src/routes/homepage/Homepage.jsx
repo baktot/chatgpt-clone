@@ -5,6 +5,12 @@ import { useState } from 'react';
 const Homepage = () => {
 
     const [typingStatus, setTypingStatus] = useState("Baktot")
+    
+    const test = async () => {
+        await fetch("http://localhost:3000/api/test", {
+            credentials: "include",
+        });
+    };
 
     return (
     <div className='homepage'>
@@ -16,6 +22,7 @@ const Homepage = () => {
                 Explicabo quia necessitatibus aspernatur eiusadas
             </h3>
             <Link to="/dashboard">Get Started</Link>
+            <button onClick={test}>TEST BACKEND AUTH</button>
         </div>
         <div className="right">
             <div className="imgContainer">
