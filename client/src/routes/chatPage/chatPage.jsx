@@ -11,7 +11,7 @@ const ChatPage = () => {
       const chatId = path.split("/").pop()
 
     const { isPending, error, data } = useQuery({
-    queryKey:['chat', chatId],
+    queryKey:["chat", chatId],
     queryFn: () =>
       fetch(`${import.meta.env.VITE_API_URL}/api/chats/${chatId}`, {
         credentials: "include",
@@ -20,7 +20,7 @@ const ChatPage = () => {
       ),
   });
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className='chatPage'>
@@ -44,7 +44,7 @@ const ChatPage = () => {
           </div>
           </>
           ))}
-          <NewPrompt/>
+          {data && <NewPrompt data={data}/>}
         </div>
       </div>
     </div>

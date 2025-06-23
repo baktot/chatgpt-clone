@@ -6,11 +6,11 @@ const Homepage = () => {
 
     const [typingStatus, setTypingStatus] = useState("Baktot")
     
-    const test = async () => {
-        await fetch("http://localhost:3000/api/test", {
-            credentials: "include",
-        });
-    };
+    // const test = async () => {
+    //     await fetch("http://localhost:3000/api/test", {
+    //         credentials: "include",
+    //     });
+    // };
 
     return (
     <div className='homepage'>
@@ -18,11 +18,10 @@ const Homepage = () => {
         <div className="left">
             <h1>Drei Ai</h1>
             <h2>I am drei your ai helper, What can i help you?</h2>
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Explicabo quia necessitatibus aspernatur eiusadas
+            <h3>This is only a project of mine where I can learn how to integrate different API's and use it accordingly like those famous AI Chat Apps.
             </h3>
             <Link to="/dashboard">Get Started</Link>
-            <button onClick={test}>TEST BACKEND AUTH</button>
+            {/* <button onClick={test}>TEST BACKEND AUTH</button> */}
         </div>
         <div className="right">
             <div className="imgContainer">
@@ -65,7 +64,7 @@ const Homepage = () => {
             </div>
         </div>
         <div className="terms">
-            <img src="/logo.png" alt="logo" />
+            <img src="/Logowhite.png" alt="logo" />
             <div className="links">
                 <Link to="/">Terms of Service</Link>
                 <Link to="/">Privacy Policy</Link>

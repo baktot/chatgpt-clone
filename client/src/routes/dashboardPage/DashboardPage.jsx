@@ -23,7 +23,7 @@ const DashboardPage = () => {
             queryClient.invalidateQueries({ queryKey: ['userChats'] });
             navigate(`/dashboard/chats/${id}`);
         },
-    })
+    });
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
@@ -36,7 +36,7 @@ const DashboardPage = () => {
         <div className='dashboardPage'>
             <div className="texts">
                 <div className="logo">
-                    <img src="/logo.png" alt="logo" />
+                    <img src="/Logowhite.png" alt="logo" />
                     <h1>Drei Ai</h1>
                 </div>
                 <div className="options">
@@ -56,7 +56,7 @@ const DashboardPage = () => {
             </div>
             <div className="formContainer">
                 <form onSubmit={handleSubmit}>
-                    <input type="text" name="text" placeholder='Ask me anything...'/>
+                    <input type="text" name="text" placeholder='Ask me anything...' autoComplete='off'/>
                     <button>
                         <img src="/arrow.png" alt="arrow" />
                     </button>

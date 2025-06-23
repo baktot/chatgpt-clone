@@ -29,7 +29,7 @@ const ChatList = () => {
         </div>
         <hr />
         <div className="upgrade">
-            <img src="/logo.png" alt="logo" />
+            <img src="/Logowhite.png" alt="logo" />
             <div className="texts">
                 <span>Upgrade to Drei Ai Pro</span>
                 <span>Get unlimited access to all feature</span>

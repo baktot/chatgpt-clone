@@ -1,14 +1,19 @@
 import express from "express";
 import ImageKit from "imagekit";
 import cors from "cors";
+// import path from "path";
+// import url from "urls";
 import mongoose from "mongoose";
-import Chat from "./models/chat.js"
+import Chat from "./models/chat.js";
 import UserChats from "./models/userChats.js";
-import { requireAuth } from '@clerk/express'
+import { requireAuth } from '@clerk/express';
+// import { fileURLToPath } from "url";
 
 const port = process.env.PORT || 3000;
 const app = express();
 
+// const __filename = fileURLToPath(import.meta.url)
+// const __dirname = path.dirname(__filename)
 app.use(
     cors({
         origin: process.env.CLIENT_URL,
@@ -124,10 +129,42 @@ app.get("/api/chats/:id", requireAuth(), async (req, res)=>{
     }
 });
 
+app.put("/api/chats/:id", requireAuth(), async (req,res)=>{
+
+    const userId = req.auth.userId;
+    const { question, answer, img } = req.body;
+    const newItems =[
+        ...( question ? [{ role: "user", parts: [{text:question}], ...(img && {img}) }] : []),
+        { role: "model", parts: [{text:answer}], ...(img && {img}) },
+    ]
+
+    try{
+        const updatedChat = await Chat.updateOne({ _id:req.params.id,userId },{
+            $push:{
+                history:{
+                    $each: newItems,
+                },
+            },
+        }
+    );
+        res.status(200).send(updatedChat);
+    }catch (err){
+        console.log(err);
+        res.status(500).send("Error adding conversation!");
+    }
+
+})
+
 app.use((err, req, res, next)=>{
     console.error(err.stack);
     res.status(401).send('Unauthenticated!');
-})
+});
+
+// app.use(express.static(path.join(__dirname, "../client")))
+
+// app.get("*",(req,res)=>{
+//     res.sendFile(path.join(__dirname, "../client", "index.html"))
+// })
 
 app.listen(port, ()=>{
     connect();

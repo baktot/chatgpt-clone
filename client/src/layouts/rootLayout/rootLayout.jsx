@@ -20,7 +20,7 @@ const RootLayout = () => {
             <div className='rootLayout'>
                 <header>
                     <Link to = "/" className='logo'>
-                        <img src="/logo.png" alt="logo" />
+                        <img src="/Logowhite.png" alt="logo" />
                         <span>DREI AI</span>
                     </Link>
                     <div className='user'>
